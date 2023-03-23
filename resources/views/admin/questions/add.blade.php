@@ -20,14 +20,14 @@
                         <div class="col-md-6">
                         </div>
                         <div class="col-md-6">
-                            <a class="btn btn-info pull-right m-b-10"
+                            <a class="btn bg-gradient-primary pull-right m-b-10"
                                 href="{{ route('admin.questions.index') }}">Back</a>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="card">
-                                <div class="card-header bg-info">
+                                <div class="card-header bg-gradient-primary">
                                     <h4 class="m-b-0 text-white"> questions</h4>
                                 </div>
                                 <div class="card-body ">
@@ -37,7 +37,6 @@
 
                                         @csrf
                                         <div class="form-body dynamic-wrap">
-                                            <h3 class="card-title">SURVEY QUESTIONS & ANSWERS</h3>
                                             <hr>
                                             <div class="row">
                                                 <div class="col-md-12">

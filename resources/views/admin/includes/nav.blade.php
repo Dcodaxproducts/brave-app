@@ -50,6 +50,24 @@
                     <span class="nav-link-text ms-1">Survey Questions</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.settings.index') }}">
+                    <div
+                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="ni ni-settings text-secondary text-sm opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Settings</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.faqs.index') }}">
+                    <div
+                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="ni ni-ruler-pencil text-primary text-sm opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">FAQ's</span>
+                </a>
+            </li>
         </ul>
     </div>
 </aside>

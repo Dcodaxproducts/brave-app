@@ -7,6 +7,7 @@ use App\Http\Controllers\API\UserSurveyController;
 use App\Http\Controllers\API\PartnerController;
 use App\Http\Controllers\API\SurveyQuestionController;
 use App\Http\Controllers\API\VerificationController;
+use App\Http\Controllers\API\SettingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,8 @@ Route::get('account/verify/{token}', [RegisterController::class, 'verifyAccount'
 
    
 Route::middleware('auth:api')->group( function () {
+    Route::post('logout', [RegisterController::class, 'logout']);
+
     Route::post('/verify', [VerificationController::class, 'verify']);
     Route::post('/check', [VerificationController::class, 'check']);
     //User's survey
@@ -51,4 +54,8 @@ Route::middleware('auth:api')->group( function () {
 
     //Questions/Answers
     Route::get('survey/question/answers', [SurveyQuestionController::class, 'index']);
+
+    Route::get('dynamic/documents', [SettingController::class, 'dynamicDocuments']);
+    Route::get('faqs', [SettingController::class, 'faqs']);
+    
 });

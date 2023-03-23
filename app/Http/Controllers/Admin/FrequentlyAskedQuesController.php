@@ -4,11 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Http\Requests\Admin\SettingRequest;
-use App\Models\Setting;
+use App\Models\Faq;
 use Session;
 
-class SettingController extends Controller
+class FrequentlyAskedQuesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +16,8 @@ class SettingController extends Controller
      */
     public function index()
     {
-        $data['settings'] = Setting::orderBy('id','desc')->get();
-        return view('admin.settings.index',$data); 
+        $data['faqs'] = Faq::orderBy('id','desc')->get();
+        return view('admin.faqs.index',$data);
     }
 
     /**
@@ -28,7 +27,7 @@ class SettingController extends Controller
      */
     public function create()
     {
-        return view('admin.settings.add');
+        return view('admin.faqs.add');
     }
 
     /**
@@ -40,11 +39,11 @@ class SettingController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $setting = new Setting;
-        $setting->fill($data);
-        $setting->save();
-        Session::flash('success','Setting added successfully');
-        return redirect()->route('admin.settings.index');
+        $faq = new Faq;
+        $faq->fill($data);
+        $faq->save();
+        Session::flash('success','faq added successfully');
+        return redirect()->route('admin.faqs.index');
     }
 
     /**
@@ -67,8 +66,8 @@ class SettingController extends Controller
     public function edit($id)
     {
         
-        $data['settings'] = Setting::where('id', $id)->get();
-        return view('admin.settings.edit', $data);
+        $data['faqs'] = Faq::where('id', $id)->get();
+        return view('admin.faqs.edit', $data);
     }
 
     /**
@@ -81,11 +80,11 @@ class SettingController extends Controller
     public function update(Request $request)
     {
         $data = $request->all();
-        $setting = Setting::find($request->id);
-        $setting->fill($data);
-        $setting->save();
-        Session::flash('success','Setting updated successfully');
-        return redirect()->route('admin.settings.index');
+        $faq = Faq::find($request->id);
+        $faq->fill($data);
+        $faq->save();
+        Session::flash('success','faq updated successfully');
+        return redirect()->route('admin.faqs.index');
     }
 
     /**
@@ -96,10 +95,10 @@ class SettingController extends Controller
      */
     public function destroy($id)
     {
-        $setting = Setting::find($id);
-        if($setting->delete()){
-            Session::flash('success','Setting deleted successfully');
-            return redirect()->route('admin.settings.index');
+        $faq = Faq::find($id);
+        if($faq->delete()){
+            Session::flash('success','faq deleted successfully');
+            return redirect()->route('admin.faqs.index');
         }
     }
 }

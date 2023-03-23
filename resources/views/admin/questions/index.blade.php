@@ -6,8 +6,8 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <a class="pull-right btn btn-inline-block btn-info" href="{{ route('admin.questions.create') }}">
-                        <i class="fa fa-plus"></i> Add New Survey Questions & Answers
+                    <a class="pull-right btn btn-inline-block bg-gradient-primary" href="{{ route('admin.questions.create') }}">
+                        <i class="fa fa-plus"></i> Add New
                     </a>
                     <h4 class="card-title d-inline-block">Survey Questions & Answers</h4>
                     <h6 class="card-subtitle">Under this section you will find list of all Survey Questions & Answers</h6>

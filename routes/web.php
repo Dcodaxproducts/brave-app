@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\PageController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\FrequentlyAskedQuesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -88,5 +89,20 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'as' => 'admin.'], fu
          Route::post('questions/update', [SurveyQuestionController::class, 'update'])->name('questions.update');
          Route::get('questions/delete/{id}', [SurveyQuestionController::class, 'destroy']);
  
+          //settings
+          Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
+          Route::get('settings/add', [SettingController::class, 'create'])->name('settings.create');
+          Route::post('settings/store', [SettingController::class, 'store'])->name('settings.store');
+          Route::get('settings/edit/{id}', [SettingController::class, 'edit']);
+          Route::post('settings/update', [SettingController::class, 'update'])->name('settings.update');
+          Route::get('settings/delete/{id}', [SettingController::class, 'destroy']);
+
+           //faqs
+           Route::get('faqs', [FrequentlyAskedQuesController::class, 'index'])->name('faqs.index');
+           Route::get('faqs/add', [FrequentlyAskedQuesController::class, 'create'])->name('faqs.create');
+           Route::post('faqs/store', [FrequentlyAskedQuesController::class, 'store'])->name('faqs.store');
+           Route::get('faqs/edit/{id}', [FrequentlyAskedQuesController::class, 'edit']);
+           Route::post('faqs/update', [FrequentlyAskedQuesController::class, 'update'])->name('faqs.update');
+           Route::get('faqs/delete/{id}', [FrequentlyAskedQuesController::class, 'destroy']);
     });
 });

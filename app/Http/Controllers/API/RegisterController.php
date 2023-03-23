@@ -125,6 +125,13 @@ class RegisterController extends BaseController
         } 
     }
 
+    public function logout(Request $request)
+    {
+        $user = $request->user();
+        $user->token()->revoke();
+        return $this->sendResponse([], 'User logged out successfully.');
+    }
+
     public function verifyAccount($token)
     {
         $verifyUser = UserVerify::where('token', $token)->first();
