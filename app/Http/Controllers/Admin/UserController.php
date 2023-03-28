@@ -124,8 +124,8 @@ class UserController extends Controller
 
     public function surveyDetails($id){
 
-        $survey = UserSurvey::where('id',$id)->get();
-        return response()->json($survey, 200);
+        $data['surveys'] = UserSurvey::where('id',$id)->get();
+        return view('admin.survey.details',$data);
         
     }
 

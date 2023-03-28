@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\API\RegisterController;
+use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\UserSurveyController;
 use App\Http\Controllers\API\PartnerController;
 use App\Http\Controllers\API\SurveyQuestionController;
@@ -28,20 +28,20 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('register', [RegisterController::class, 'register']);
-Route::post('login', [RegisterController::class, 'login']);
+Route::post('register', [UserController::class, 'register']);
+Route::post('login', [UserController::class, 'login']);
 
-Route::get('/signin/google', [RegisterController::class, 'redirectToGoogle']);
-Route::get('/signin/google/callback', [RegisterController::class, 'handleGoogleCallback']);
+Route::get('/signin/google', [UserController::class, 'redirectToGoogle']);
+Route::get('/signin/google/callback', [UserController::class, 'handleGoogleCallback']);
 
 /* New Added Routes */
 
-Route::get('account/verify/{token}', [RegisterController::class, 'verifyAccount'])->name('user.verify'); 
+Route::get('account/verify/{token}', [UserController::class, 'verifyAccount'])->name('user.verify'); 
 
 
    
 Route::middleware('auth:api')->group( function () {
-    Route::post('logout', [RegisterController::class, 'logout']);
+    Route::post('logout', [UserController::class, 'logout']);
 
     Route::post('/verify', [VerificationController::class, 'verify']);
     Route::post('/check', [VerificationController::class, 'check']);

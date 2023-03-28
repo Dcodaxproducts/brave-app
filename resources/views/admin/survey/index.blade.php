@@ -33,7 +33,7 @@
                                     <td>{{ $user->employer }}</td>
                                     <td>{{ $user->preferred_strategy }}</td>
                                     <td>
-                                    <a href="#" class="view_user_survey btn btn-outline-info border-0 shadow-none" title="View" data-toggle="tooltip" data-id="{{ $user->id }}" data-url="{{ url('admin/survey/details',[$user->id])}}"> <icon class="fa fa-eye"></icon></a>
+                                    <a href="{{ url('admin/survey/details',[$user->id])}}" class="btn btn-outline-info border-0 shadow-none"> <icon class="fa fa-eye"></icon></a>
 
                                         {{--<a class="btn btn-outline-info border-0 shadow-none" title="Edit" data-toggle="tooltip" href="{{ route('admin/user/edit',['user'=>$user->id]) }}"><icon class="fa fa-pencil-square-o"></icon></a>
 

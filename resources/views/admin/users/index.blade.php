@@ -35,9 +35,9 @@
                                     <td>{{ $user->phone ?: '___' }}</td>
 									<td>{{ $user->survey_complete ?: '___' }}</td>
                                     <td>
-                                        <a href="#" class="view_user btn btn-outline-info border-0 shadow-none" title="View" data-toggle="tooltip" data-id="{{ $user->id }}" data-url="{{ url('admin/user/details',[$user->id])}}"> <icon class="fa fa-eye"></icon></a>
+									{{--<a href="#" class="view_user btn btn-outline-info border-0 shadow-none" title="View" data-toggle="tooltip" data-id="{{ $user->id }}" data-url="{{ url('admin/user/details',[$user->id])}}"> <icon class="fa fa-eye"></icon></a>
                                         <br>
-                                        {{--<a class="btn btn-outline-info border-0 shadow-none" title="Edit" data-toggle="tooltip" href="{{ url('admin/user/edit',[$user->id]) }}"><icon class="fa fa-pencil-square-o"></icon></a>
+                                        <a class="btn btn-outline-info border-0 shadow-none" title="Edit" data-toggle="tooltip" href="{{ url('admin/user/edit',[$user->id]) }}"><icon class="fa fa-pencil-square-o"></icon></a>
                                         <br>
                                         <span>--}}
                                         <form action="{{ url('admin/user/delete', [$user->id]) }}" method="get">
