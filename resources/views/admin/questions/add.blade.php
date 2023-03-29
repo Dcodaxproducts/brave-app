@@ -53,6 +53,19 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>Question Description <i style="color:green;">Optional</i></label>
+                                                        <input type="text" placeholder="Question Description.." name="question_description"
+                                                            class="form-control">
+                                                            @if ($errors->has('question_description'))
+                                                                <div class="alert alert-danger mt-2">{{ $errors->first('question_description') }}</div>
+                                                            @endif
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12">
                                                     <label>Answer</label>
 
                                                     <div class="here">

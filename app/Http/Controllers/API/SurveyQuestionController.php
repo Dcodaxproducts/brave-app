@@ -20,25 +20,14 @@ class SurveyQuestionController extends BaseController
 
         $questions = SurveyQuestion::all();
         $groupedQuestions = $questions->map(function ($question) {
+
             return [
+                'id' => $question-> id,
                 'question' => $question -> question,
+                'question_description' => $question -> question_description,
                 'answers' => json_decode($question -> answers)
             ];
         });
-
-        // Group the answers by the question
-        // $groupedQuestions = $questions->groupBy('question')->map(function ($group) {
-        //     $answers = $group->pluck('answers')->toArray();
-        //     foreach ($answers as &$answer) {
-        //         $answer = json_decode($answer, true);
-        //     }
-        //     return [
-        //         'question' => $group->first()->question,
-        //         'answers' => $answers,
-        //     ];
-        // })->values()->toArray();
-
-        // Return the grouped questions as an array
 
         if($groupedQuestions){
             $success = $groupedQuestions;

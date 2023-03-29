@@ -11,6 +11,7 @@ class SurveyQuestion extends Model
 
     protected $fillable = [
         'question',
+        'question_description',
         'answers',
     ];
 }

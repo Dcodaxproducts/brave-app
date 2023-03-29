@@ -21,7 +21,7 @@ class FetchNotionPage extends Command
 
         $pageIds = ['94f766a01c1b410d9b1eaffa23628779', 'bae4a7b9844c4398a7e25cccd6854d57', '93db07de819e4308b1a9399c4c96fc45', '8d993ff5e6b04c0887c765168eae2160', '0a9b621abf3e452b99c0ff823df72c9c'];
 
-        // DB::table('documents')->orderBy('created_at')->limit(5)->delete();
+        Document::truncate();
 
         foreach ($pageIds as $pageId) {
 
@@ -30,9 +30,22 @@ class FetchNotionPage extends Command
             $response = $client->request('GET', $formattedPageId);
         
             $data = json_decode($response->getBody(), true);
-
+          
             $title = $data[$formattedPageId]['value']['properties']['title'][0][0];
+            $contentIds = $data[$formattedPageId]['value']['content'];
+            $new_data = [];
+            foreach($contentIds as $contentId){
+                $response = $client->request('GET', $formattedPageId);
+                $data = json_decode($response->getBody(), true);
+                if(isset($data[$contentId]['value']['properties'])){
+                    $content = $data[$contentId]['value']['properties']['title'][0][0];
+                    array_push($new_data, $content);
+                }
+               
+            }
 
+            $content_data = json_encode(implode("\n\n", $new_data)); 
+      
             $author = null;
             if (isset($data[$formattedPageId]['value']['properties']['Author'])) {
                 $author = $data[$formattedPageId]['value']['properties']['Author']['rich_text'][0]['plain_text'];
@@ -64,10 +77,11 @@ class FetchNotionPage extends Command
             $url = 'https://www.notion.so/' . $data[$formattedPageId]['value']['id'];
           
 
-            $document = Document::createFromNotion($title, $author, $language, $source, $category, $keywords, $pageId, $url);
+            $document = Document::createFromNotion($title, $author, $language, $source, $category, $keywords, $pageId, $url , $content_data);
         
            
         }
+
 
     }
 }

@@ -12,10 +12,9 @@ use App\Models\UserSurvey;
 use App\Models\Document;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cache;
-use FiveamCode\LaravelNotionApi\Facades\Notion;
 use GuzzleHttp\Client;
-
-
+use GuzzleHttp\Exception\ClientException;
+use FiveamCode\LaravelNotionApi\Notion;
 use Validator;
 
 class UserSurveyController extends BaseController

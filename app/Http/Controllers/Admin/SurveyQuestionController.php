@@ -43,6 +43,7 @@ class SurveyQuestionController extends Controller
         $answers = json_encode($arr);
         $question = new SurveyQuestion();
         $question->question = $request->question;
+        $question->question_description = $request->question_description ?? NULL;
         $question->answers = $answers;
 
         if($question->save()){

@@ -4,8 +4,12 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Setting;
-use App\Models\Faq;
+use App\Models\{
+    Setting,
+    Faq,
+    Document,
+};
+
 use App\Http\Controllers\API\BaseController as BaseController;
 
 class SettingController extends BaseController
@@ -15,13 +19,11 @@ class SettingController extends BaseController
         return Setting::find($id, ['key', 'details']);
     }
 
-    public function dynamicDocuments()
+    public function fees()
     {
-        $data['support'] = $this->settings(1);
-        $data['documents'] = $this->settings(2);
-        $data['fees'] = $this->settings(3);
-
-        return $this->sendResponse($data, 'Settings Data');
+        $fees = "Fees";
+        $data = Document::where('title', 'LIKE', '%'.$fees.'%')->get();
+        return $this->sendResponse($data, 'fees Data');
     }
 
     public function faqs()

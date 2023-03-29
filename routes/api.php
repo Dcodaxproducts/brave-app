@@ -38,7 +38,6 @@ Route::get('/signin/google/callback', [UserController::class, 'handleGoogleCallb
 
 Route::get('account/verify/{token}', [UserController::class, 'verifyAccount'])->name('user.verify'); 
 
-
    
 Route::middleware('auth:api')->group( function () {
     Route::post('logout', [UserController::class, 'logout']);
@@ -55,7 +54,7 @@ Route::middleware('auth:api')->group( function () {
     //Questions/Answers
     Route::get('survey/question/answers', [SurveyQuestionController::class, 'index']);
 
-    Route::get('dynamic/documents', [SettingController::class, 'dynamicDocuments']);
+    Route::get('fees', [SettingController::class, 'fees']);
     Route::get('faqs', [SettingController::class, 'faqs']);
     
 });

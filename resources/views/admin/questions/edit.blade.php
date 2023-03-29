@@ -46,6 +46,17 @@
                                                 </div>
 
                                                 <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label>Question Description <i style="color:green;">Optional</i></label>
+                                                     
+                                                        <input type="hidden" name="id" value="{{ $data->id }}">
+                                                        <input type="text" placeholder="Name" name="name"
+                                                            class="form-control" value="{{ $data->question }}">
+                                                    </div>
+                                           
+                                                </div>
+
+                                                <div class="col-md-12">
                                                 @foreach($answers as $answer)
                                                 <label>Answers</label>
                                                 <input type="text" placeholder="Answers" name="answers[]" value="{{ $answer }}" class="form-control">

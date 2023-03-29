@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Document extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'author', 'language', 'source', 'category', 'keywords', 'page_id', 'url'];
+    protected $fillable = ['title', 'author', 'language', 'source', 'category', 'keywords', 'page_id', 'url', 'content'];
 
-    public static function createFromNotion($title, $author, $language, $source, $category, $keywords, $pageId, $url)
+    public static function createFromNotion($title, $author, $language, $source, $category, $keywords, $pageId, $url, $content_data)
     {
         return self::create([
             'title' => $title,
@@ -21,6 +21,7 @@ class Document extends Model
             'keywords' => $keywords,
             'page_id' => $pageId,
             'url' => $url,
+            'content' => $content_data,
         ]);
     }
 }

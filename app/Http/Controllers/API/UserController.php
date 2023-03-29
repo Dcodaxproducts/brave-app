@@ -32,21 +32,24 @@ class UserController extends BaseController
 
     public function handleGoogleCallback(Request $request)
     {
+      
         // Check if the user already exists in your database
-        $user = User::where('google_oauth_key', $google_id)->first();
+        $user = User::where('google_oauth_key', $request->google_id)->where('email', $request->email)->first();
         if ($user) {
             // User already exists, return a response with a message
             Auth::login($user);
+            $success['token'] =  $user->createToken('MyApp')->accessToken;
             $success['email'] =  $user->email;
             $success['user'] =  $user;
             return $this->sendResponse($success, 'User login successfully.');
         } else {
+            
             $newUser = User::create([
                 'first_name' => $request->first_name,
                 'last_name' => $request->last_name,
                 'email' => $request->email,
                 'google_oauth_key'=> $request->google_id,
-                'image'=> $request->image_url ?? NULL,
+                'image'=> $request->image_url,
                 'password' => encrypt('123456')
             ]);
   
